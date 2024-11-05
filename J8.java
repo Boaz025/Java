@@ -1,17 +1,28 @@
-public class J8{
-   public static void main(String[] args){
-        Strings s1,s2;
-        int i;
-        s1="A B C D E F";
-        for(i=0;i<6;i++)
-        {
-        s2=s1.substring(0,i);
-        System.out.print(s2);
-        }
-        for(i=4;i<0;i++)
-        {
-        s2=s1.substring(0,i);
-        System.out.print(s2);
-        }
+package pkg1;
+class MultiThreadingFour extends Thread{
+	int threadNumber;
+	MultiThreadingFour(int tNo){
+		this.threadNumber=tNo;
+	}
+	public void run() {
+		for(int i=1;i<6;i++) {
+			System.out.println("Task"+i+ " by ThreadNumber "+ threadNumber);
+			try {
+				Thread.sleep(1000);
+			}
+			catch(InterruptedException e) {
+			}
+		}
+	}
 }
+public class J8 {
+	public static void main(String[] args) {
+		for(int i=1; i<8; i++) {
+			MultiThreadingFour mt1=new MultiThreadingFour(i);
+			mt1.start();
+		}
+		
+
+	}
+
 }

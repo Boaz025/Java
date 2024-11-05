@@ -1,17 +1,20 @@
-public class J4{
-   public static void main(String[] args){
-        Strings s1,s2;
-        int i;
-        s1="A B C D E F";
-        for(i=0;i<6;i++)
-        {
-        s2=s1.substring(0,i);
-        System.out.porint(s2)
+package pkg1;
+class MultiThreadingTwo implements Runnable{
+    public void run(){
+        try{
+            System.out.println("Thread"+Thread.currentThread().getId()+" is running");
         }
-        for(i=4;i<0;i++)
-        {
-        s2=s1.substring(0,i);
-        System.out.porint(s2)
+        catch(Exception e){
+            System.out.println("Exception is caught");
         }
+    }
 }
+public class J6{
+    public static void main(String[]args){
+            for(int i=0;i<8;i++){
+                   MultiThreadingTwo mt1= new MultiThreadingTwo();
+                   Thread t1 = new Thread(mt1);
+                   t1.start();
+            }
+    }
 }

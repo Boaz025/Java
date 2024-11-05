@@ -1,30 +1,29 @@
-import java.util.Scanner;
+package pkg1;
+class MultiThreadingFive implements Runnable{
+	int threadNumber;
+	MultiThreadingFive(int tNo){
+		this.threadNumber=tNo;
+	}
+	public void run() {
+		for(int i=1;i<6;i++) {
+			System.out.println("Task"+i+ " by ThreadNumber "+ threadNumber);
+			try {
+				Thread.sleep(1000);
+			}
+			catch(InterruptedException e) {
+			}
+		}
+	}
+}
 public class J9{
-   public static void main(String[] args) {
-      int N = Integer.parseInt(args[0]);
+	public static void main(String[] args) {
+		for(int i=1; i<8; i++) {
+			MultiThreadingFive mt1=new MultiThreadingFive(i);
+			Thread t1=new Thread(mt1);
+			t1.start();
+		}
+		
 
-      int[][] matrix1 = new int[N][N];
-      int[][] matrix2 = new int[N][N];
-      Scanner scanner = new Scanner(System.in);
-      System.out.println("Enter the elements of the first matrix:");
-      for (int i = 0; i<N; i++) {
-          for(int j=0; j<N; j++) {
-             matrix1[i][j] = scanner.nextInt();}}
-      System.out.println("Enter the elements of the second matrix:");
-      for (int i = 0; i<N; i++) {
-          for(int j=0; j<N; j++) {
-             matrix2[i][j] = scanner.nextInt();}}
-      int[][] summatrix = new int[N][N];
-      for (int i = 0; i<N; i++) {
-          for (int j = 0; j< N; j++) {
-              summatrix[i][j] = matrix1[i][j] + matrix2[i][j]; } }
-      
-      System.out.println("The sum of the two matrices is:");
-          for (int i = 0; i<N; i++) {
-          for(int j=0; j<N; j++) {
-             System.out.print(summatrix[i][j] + " ");
-           }
-           System.out.println();
-      }
-   }
+	}
+
 }
